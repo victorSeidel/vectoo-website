@@ -1,21 +1,16 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { Github, Linkedin, Instagram, Twitter, Heart } from "lucide-react";
+
+import { Heart } from "lucide-react";
+
 import { COMPANY, NAV_LINKS, SERVICES, SOCIAL_LINKS } from "@/lib/constants";
 
-const socialIcons = 
-{
-    github: Github,
-    linkedin: Linkedin,
-    instagram: Instagram,
-    twitter: Twitter,
-};
+const socialIcons = { github: Heart, linkedin: Heart, instagram: Heart, twitter: Heart };
 
 export function Footer()
 {
-  const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear();
 
     return (
         <footer className="relative border-t border-border/30 bg-card/20">

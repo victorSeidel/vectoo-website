@@ -1,7 +1,8 @@
 "use client";
-
 import { useState, useEffect } from "react";
-import { MessageCircle, X, ArrowUp } from "lucide-react";
+
+import { MessageCircle, ArrowUp } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 
 export function FloatingCTA() 
@@ -22,16 +23,14 @@ export function FloatingCTA()
 
     return (
         <div className={cn("fixed bottom-6 right-6 z-50 flex flex-col gap-3 transition-all duration-500",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none" )} >
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none" )} >
 
-            {/* Scroll to Top */}
             <button type="button" onClick={scrollToTop} aria-label="Voltar ao topo"
                 className="flex items-center justify-center p-3 rounded-full bg-secondary/80 backdrop-blur-sm border border-border/50 text-muted-foreground 
                     hover:text-foreground hover:border-primary/30 transition-all duration-300 hover:scale-110 cursor-pointer" >
                 <ArrowUp size={20} />
             </button>
 
-            {/* Contact CTA */}
             <div className="relative">
                 {showTooltip && (
                     <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-2 rounded-lg bg-card border border-border/50 text-sm 

@@ -1,13 +1,13 @@
-import { Header } from "@/components/header";
-import { HeroSection } from "@/components/sections/hero";
-import { ServicesSection } from "@/components/sections/services";
-import { AboutSection } from "@/components/sections/about";
-import { PortfolioSection } from "@/components/sections/portfolio";
-import { TestimonialsSection } from "@/components/sections/testimonials";
-import { ContactSection } from "@/components/sections/contact";
-import { CTASection } from "@/components/sections/cta";
-import { Footer } from "@/components/footer";
-import { FloatingCTA } from "@/components/floating-cta";
+import { Header } from "@/components/Header";
+import { HeroSection } from "@/components/sections/Hero";
+import { ServicesSection } from "@/components/sections/Services";
+import { AboutSection } from "@/components/sections/About";
+import { PortfolioSection } from "@/components/sections/Portfolio";
+import { TestimonialsSection } from "@/components/sections/Testimonials";
+import { ContactSection } from "@/components/sections/Contact";
+import { CTASection } from "@/components/sections/Cta";
+import { Footer } from "@/components/Footer";
+import { FloatingCTA } from "@/components/FloatingCta";
 import { SectionDivider } from "@/components/section-divider";
 import { TechMarquee } from "@/components/tech-marquee";
 

@@ -2,7 +2,7 @@ export const COMPANY =
 {
     name: "Vectoo",
     tagline: "Soluções em Tecnologia",
-    description: "Transformamos ideias em soluções digitais inovadoras. Desenvolvemos tecnologia sob medida para impulsionar o seu negócio.",
+    description: "Transformamos ideias em soluções digitais inovadoras. Desenvolvemos tecnologia sob medida para impulsionar seu negócio.",
     email: "contato@vectoo.com.br",
     phone: "+55 (31) 98259-0579",
     location: "Brasil",

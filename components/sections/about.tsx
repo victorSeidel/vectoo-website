@@ -1,7 +1,8 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
+
 import { Target, Heart, Users, Eye } from "lucide-react";
+
 import { ABOUT, TECHNOLOGIES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -22,11 +23,9 @@ export function AboutSection()
     const BackgroundElements = () =>
     (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Abstract gradient orbs */}
             <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-primary/10 rounded-full blur-[120px] animate-pulse-slow" />
             <div className="absolute bottom-[-10%] left-[-10%] w-150 h-150 bg-secondary/30 rounded-full blur-[100px]" />
             
-            {/* Grid overlay */}
             <div className="absolute inset-0"
                 style={{ backgroundImage: `linear-gradient(rgba(98, 222, 99, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(98, 222, 99, 0.03) 1px, transparent 1px)`,
                     backgroundSize: '40px 40px',

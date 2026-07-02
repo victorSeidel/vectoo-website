@@ -1,24 +1,16 @@
 "use client";
+import React, { useState } from "react";
 
-import React from "react"
+import { Send, Mail, MapPin, Phone, MessageCircle, CheckCircle2, Loader2 } from "lucide-react";
 
-import { useState } from "react";
-import {
-  Send,
-  Mail,
-  MapPin,
-  Phone,
-  MessageCircle,
-  CheckCircle2,
-  Loader2,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import emailjs from "@emailjs/browser";
+
 import { COMPANY } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-import emailjs from "@emailjs/browser";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export function ContactSection() 
 {
@@ -41,15 +33,8 @@ export function ContactSection()
 
             setTimeout(() => setIsSubmitted(false), 5000);
         } 
-        catch (error) 
-        {
-            console.error("Erro ao enviar email:", error);
-            alert("Erro ao enviar a mensagem. Tente novamente.");
-        } 
-        finally 
-        {
-            setIsSubmitting(false);
-        }
+        catch (error) { alert("Erro ao enviar a mensagem. Tente novamente."); } 
+        finally { setIsSubmitting(false); }
     };
 
     const handleChange = ( e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>

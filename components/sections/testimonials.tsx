@@ -1,35 +1,34 @@
 "use client";
-
 import { useState, useEffect } from "react";
+
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
+
 import { TESTIMONIALS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-export function TestimonialsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+export function TestimonialsSection() 
+{
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  useEffect(() => {
-    if (!isAutoPlaying) return;
+    useEffect(() => 
+    {
+        if (!isAutoPlaying) return;
+        const interval = setInterval(() => { setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length); }, 5000);
+        return () => clearInterval(interval);
+    }, [isAutoPlaying]);
 
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 5000);
+    const handlePrev = () => 
+    {
+        setIsAutoPlaying(false);
+        setActiveIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+    };
 
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-
-  const handlePrev = () => {
-    setIsAutoPlaying(false);
-    setActiveIndex(
-      (prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length
-    );
-  };
-
-  const handleNext = () => {
-    setIsAutoPlaying(false);
-    setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-  };
+    const handleNext = () => 
+    {
+        setIsAutoPlaying(false);
+        setActiveIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+    };
 
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">

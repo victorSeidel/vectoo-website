@@ -1,7 +1,8 @@
 "use client";
-
 import { useState } from "react";
+
 import { ExternalLink, ArrowUpRight } from "lucide-react";
+
 import { PORTFOLIO } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -10,7 +11,6 @@ const categories = ["Todos", ...new Set(PORTFOLIO.map((p) => p.category))];
 export function PortfolioSection() 
 {
     const [activeCategory, setActiveCategory] = useState("Todos");
-
     const filteredProjects = activeCategory === "Todos" ? PORTFOLIO : PORTFOLIO.filter((p) => p.category === activeCategory);
 
   return (
