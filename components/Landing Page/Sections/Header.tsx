@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 import { COMPANY, NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/UI/Button";
 
 export function Header() 
 {
@@ -28,7 +28,6 @@ export function Header()
 
             <div className="container mx-auto px-4 md:px-6">
                 <nav className="flex items-center justify-between">
-                    {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="relative w-10 h-10 overflow-hidden rounded-lg transition-transform duration-300 group-hover:scale-110">
                             <Image src={COMPANY.logoUrl} alt={"Logo" + COMPANY.name} fill priority className="object-cover" />
@@ -38,7 +37,6 @@ export function Header()
                         </span>
                     </Link>
 
-                    {/* Desktop Navigation */}
                     <ul className="hidden md:flex items-center gap-1">
                         {NAV_LINKS.map((link) => (
                             <li key={link.href}>
@@ -51,15 +49,12 @@ export function Header()
                         ))}
                     </ul>
 
-                    {/* CTA Button */}
                     <div className="hidden md:flex items-center gap-4">
-                        <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 
-                                hover:shadow-[0_0_20px_rgba(98,222,99,0.4)]" >
+                        <Button asChild >
                             <Link href="#contato">Iniciar Projeto</Link>
                         </Button>
                     </div>
 
-                    {/* Mobile Menu Button */}
                     <button type="button" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
                             className="md:hidden p-2 text-foreground hover:text-primary transition-colors" >
                         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -67,7 +62,6 @@ export function Header()
                 </nav>
             </div>
 
-            {/* Mobile Menu */}
             <div
                 className={cn( "md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border/50 transition-all duration-300 overflow-hidden",
                     isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0" )}>
@@ -80,8 +74,9 @@ export function Header()
                             </Link>
                         </li>
                     ))}
+
                     <li className="pt-2">
-                        <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                        <Button asChild className="w-full">
                             <Link href="#contato" onClick={() => setIsMobileMenuOpen(false)}>
                                 Iniciar Projeto
                             </Link>

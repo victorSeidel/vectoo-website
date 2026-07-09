@@ -1,15 +1,15 @@
-import { Header } from "@/components/Header";
-import { HeroSection } from "@/components/sections/Hero";
-import { ServicesSection } from "@/components/sections/Services";
-import { AboutSection } from "@/components/sections/About";
-import { PortfolioSection } from "@/components/sections/Portfolio";
-import { TestimonialsSection } from "@/components/sections/Testimonials";
-import { ContactSection } from "@/components/sections/Contact";
-import { CTASection } from "@/components/sections/Cta";
-import { Footer } from "@/components/Footer";
-import { FloatingCTA } from "@/components/FloatingCta";
-import { SectionDivider } from "@/components/section-divider";
-import { TechMarquee } from "@/components/tech-marquee";
+import { Header } from "@/components/Landing Page/Sections/Header";
+import { HeroSection } from "@/components/Landing Page/Sections/Hero";
+import { ServicesSection } from "@/components/Landing Page/Sections/Services";
+import { AboutSection } from "@/components/Landing Page/Sections/About";
+import { PortfolioSection } from "@/components/Landing Page/Sections/Portfolio";
+import { TestimonialsSection } from "@/components/Landing Page/Sections/Testimonials";
+import { ContactSection } from "@/components/Landing Page/Sections/Contact";
+import { CTASection } from "@/components/Landing Page/Sections/Cta";
+import { Footer } from "@/components/Landing Page/Sections/Footer";
+import { FloatingCTA } from "@/components/Landing Page/FloatingCta";
+import { SectionDivider } from "@/components/Landing Page/SectionDivider";
+import { TechMarquee } from "@/components/Landing Page/TechMarquee";
 
 export default function HomePage() 
 {

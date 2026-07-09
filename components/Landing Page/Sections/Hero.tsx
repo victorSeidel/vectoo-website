@@ -5,9 +5,9 @@ import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 import { COMPANY } from "@/lib/constants";
-import { AnimatedCode } from "@/components/AnimatedCode";
+import { AnimatedCode } from "@/components/Landing Page/AnimatedCode";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/UI/Button";
 
 export function HeroSection() 
 {
@@ -99,16 +99,15 @@ export function HeroSection()
 
             <AnimatedCode />
 
-            <div className="container mx-auto px-4 md:px-6 relative z-10 pt-24">
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="max-w-5xl mx-auto text-center">
-
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8 animate-fade-in-up">
                         <Sparkles size={16} />
-                        <span>Soluções em Tecnologia</span>
+                        Soluções em Tecnologia
                     </div>
 
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6 animate-fade-in-up delay-100 text-balance">
-                        Transformamos <span className="text-primary"> ideias </span> em soluções digitais
+                    <h1 className="text-4xl md:text-7xl font-bold text-foreground leading-tight mb-6 animate-fade-in-up delay-100 text-balance">
+                        Transformamos ideias em soluções digitais
                     </h1>
 
                     <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200 leading-relaxed">
@@ -116,16 +115,15 @@ export function HeroSection()
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up delay-300">
-                        <Button asChild variant="outline" size="lg" className="py-6 px-8 text-base hover:text-white font-semibold bg-transparent hover:bg-primary/5 border-border hover:border-primary/50 transition-all duration-300">
+                        <Button variant="outline" size="lg" >
                             <Link href="#portfolio">
                                 Ver Projetos
                             </Link>
                         </Button>
 
-                        <Button asChild size="lg" className="py-6 px-8 text-base text-primary-foreground font-semibold bg-primary hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(98,222,99,0.5)] hover:scale-105 transition-all duration-300" >
+                        <Button asChild size="lg" >
                             <Link href="#contato">
-                                Iniciar Projeto
-                                <ArrowRight className="ml-2" size={18} />
+                                Iniciar Projeto <ArrowRight className="ml-2" size={18} />
                             </Link>
                         </Button>
                     </div>
@@ -133,8 +131,8 @@ export function HeroSection()
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 animate-fade-in-up delay-400">
                         {STATS.map((stat, index) => (
                             <div key={stat.label}
-                                className="relative p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-card/80 group"
-                                    style={{ animationDelay: `${400 + index * 100}ms` }} >
+                                className="relative p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm transition-all duration-300
+                                    hover:border-primary/30 hover:bg-card/80 group" style={{ animationDelay: `${400 + index * 100}ms` }} >
 
                                 <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 

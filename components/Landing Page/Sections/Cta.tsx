@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { ArrowRight, Rocket } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/UI/Button";
 
 export function CTASection()
 {
