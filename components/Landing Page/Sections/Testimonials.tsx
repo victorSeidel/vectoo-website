@@ -3,8 +3,35 @@ import { useState, useEffect } from "react";
 
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
-import { TESTIMONIALS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+
+const TESTIMONIALS = 
+[
+    {
+        id: 1,
+        name: "Carlos Silva",
+        role: "CEO",
+        company: "",
+        content: "A Vectoo transformou completamente nossa operação. O sistema desenvolvido aumentou nossa eficiência e reduziu custos operacionais significativamente.",
+        avatar: "/avatars/carlos.jpg",
+    },
+    {
+        id: 2,
+        name: "Ana Martins",
+        role: "Diretora de Marketing",
+        company: "",
+        content: "Profissionais excepcionais. Entregaram nosso e-commerce no prazo, com qualidade impecável.",
+        avatar: "/avatars/ana.jpg",
+    },
+    {
+        id: 3,
+        name: "Roberto Costa",
+        role: "CTO",
+        company: "",
+        content: "A consultoria de segurança identificou vulnerabilidades críticas que passaram despercebidas. Recomendo fortemente para qualquer empresa que leva tecnologia a sério.",
+        avatar: "/avatars/roberto.jpg",
+    },
+] as const;
 
 export function TestimonialsSection() 
 {

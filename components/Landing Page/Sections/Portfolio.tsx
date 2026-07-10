@@ -3,8 +3,67 @@ import { useState } from "react";
 
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 
-import { PORTFOLIO } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+
+const PORTFOLIO = 
+[
+    {
+        id: 1,
+        title: "Sistema de Gestão Empresarial",
+        category: "Sistema",
+        description: "ERP completo com módulos de vendas, estoque, financeiro e RH. Dashboard em tempo real e relatórios avançados.",
+        tags: ["PHP", "Laravel", "MySQL"],
+        image: "/portfolio/erp.png",
+    },
+    {
+        id: 2,
+        title: "E-commerce de Moda",
+        category: "E-commerce",
+        description: "Loja virtual com gestão de produtos, carrinho inteligente, checkout otimizado e integração com gateways de pagamento.",
+        tags: ["Next.js", "Stripe", "Tailwind"],
+        image: "/portfolio/erp.png",
+    },
+    {
+        id: 3,
+        title: "Software de Divulgação",
+        category: "SaaS",
+        description: "Plataforma SaaS para conectar empresários a influenciadores e facilitar parcerias estratégicas.",
+        tags: ["React", "TypeScript", "PostgreSQL"],
+        image: "/portfolio/saas.jpg",
+    },
+    {
+        id: 4,
+        title: "Chatbot de Atendimento",
+        category: "Automação",
+        description: "Bot inteligente para WhatsApp com IA, integração com CRM e fluxos automatizados de atendimento 24/7.",
+        tags: ["n8n", "LLMs", "Python"],
+        image: "/portfolio/chatbot.jpg",
+    },
+    {
+        id: 5,
+        title: "Dashboard Analytics",
+        category: "Sistema",
+        description: "Painel de métricas em tempo real com visualizações interativas, alertas customizáveis e exportação de dados.",
+        tags: ["VBA", "Power BI", "Firebase"],
+        image: "/portfolio/dashboard.jpg",
+    },
+    {
+        id: 6,
+        title: "App de Delivery",
+        category: "Aplicação",
+        description: "Aplicativo completo para restaurantes com pedidos, rastreamento em tempo real e gestão de entregadores.",
+        tags: ["React Native", "Java", "MongoDB"],
+        image: "/portfolio/delivery.jpg",
+    },
+    {
+        id: 7,
+        title: "Plataforma de Cursos Online",
+        category: "Sistema",
+        description: "Sistema de ensino à distância com vídeo-aulas, quizzes, certificados automáticos e área do aluno completa.",
+        tags: ["Vue.js", "Laravel", "AWS"],
+        image: "/portfolio/cursos.jpg",
+    },
+] as const;
 
 const categories = ["Todos", ...new Set(PORTFOLIO.map((p) => p.category))];
 

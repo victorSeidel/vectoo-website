@@ -3,10 +3,32 @@ import { useEffect, useRef, useState } from "react";
 
 import { Target, Heart, Users, Eye } from "lucide-react";
 
-import { ABOUT, TECHNOLOGIES } from "@/lib/constants";
+import { TECHNOLOGIES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const valueIcons = [Target, Heart, Users, Eye];
+const VALUES = 
+[
+    {
+        icon: Target,
+        title: "Inovação",
+        description: "Buscamos constantemente novas tecnologias e metodologias para entregar as melhores soluções.",
+    },
+    {
+        icon: Heart,
+        title: "Qualidade",
+        description: "Código limpo, boas práticas e atenção aos detalhes em cada projeto que desenvolvemos.",
+    },
+    {
+        icon: Users,
+        title: "Parceria",
+        description: "Trabalhamos lado a lado com nossos clientes, entendendo suas necessidades e objetivos.",
+    },
+    {
+        icon: Eye,
+        title: "Transparência",
+        description: "Comunicação clara e honesta em todas as etapas do desenvolvimento.",
+    },
+];
 
 export function AboutSection() 
 {
@@ -34,114 +56,93 @@ export function AboutSection()
         </div>
     );
 
-  return (
-    <section
-      id="sobre"
-      ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
-    >
+    return (
+        <section id="sobre" ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden" >
+            <BackgroundElements />
 
-        <BackgroundElements />
+            <div className="container mx-auto px-4 md:px-6 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <div className={cn("transition-all duration-1000", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10")}>
+                        <span className="text-primary font-mono text-sm tracking-wider uppercase mb-4 block">
+                            {"// Quem Somos"}
+                        </span>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Content */}
-          <div
-            className={cn(
-              "transition-all duration-1000",
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-10"
-            )}
-          >
-            <span className="text-primary font-mono text-sm tracking-wider uppercase mb-4 block">
-              {"// Quem Somos"}
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-              {ABOUT.subtitle}
-            </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              {ABOUT.description.split("\n\n").map((paragraph, index) => (
-                <p key={index}>{paragraph.trim()}</p>
-              ))}
-            </div>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
+                            Tecnologia que transforma
+                        </h2>
 
-            {/* Technologies */}
-            <div className="mt-10">
-              <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
-                Tecnologias que dominamos
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {TECHNOLOGIES.map((tech, index) => (
-                  <span
-                    key={tech}
-                    className={cn(
-                      "px-3 py-1.5 text-sm rounded-lg bg-secondary/50 text-muted-foreground border border-border/30 transition-all duration-300 hover:border-primary/30 hover:text-foreground",
-                      isVisible ? "opacity-100" : "opacity-0"
-                    )}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+                        <div className="space-y-4 text-muted-foreground leading-relaxed">
+                            <p>
+                                Somos uma empresa de tecnologia focada em entregar soluções digitais de alta qualidade. <br />
+                                Combinamos expertise técnica com visão de negócio para criar produtos que realmente fazem a diferença.
+                            </p>
+    
+                            <p>
+                                Nossa missão é simplificar a tecnologia e torná-la acessível,
+                                permitindo que empresas de todos os tamanhos possam se beneficiar de soluções inovadoras e eficientes.
+                            </p>
+                        </div>
 
-          {/* Right Column - Values */}
-          <div
-            className={cn(
-              "transition-all duration-1000 delay-200",
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-10"
-            )}
-          >
-            <div className="grid sm:grid-cols-2 gap-6">
-              {ABOUT.values.map((value, index) => {
-                const Icon = valueIcons[index];
-                return (
-                  <div
-                    key={value.title}
-                    className={cn(
-                      "group p-6 rounded-2xl bg-card/30 border border-border/50 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/50",
-                      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-                    )}
-                    style={{ transitionDelay: `${300 + index * 100}ms` }}
-                  >
-                    <div className="p-3 w-fit rounded-xl bg-primary/10 text-primary mb-4 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_20px_rgba(98,222,99,0.3)]">
-                      <Icon size={24} />
+                        <div className="mt-10">
+                            <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+                                Tecnologias que dominamos
+                            </h4>
+
+                            <div className="flex flex-wrap gap-2">
+                                {TECHNOLOGIES.map(tech => (
+                                    <span key={tech}
+                                        className={cn(`px-3 py-1.5 text-sm rounded-lg bg-secondary/50 text-muted-foreground border border-border/30 transition-all 
+                                            duration-300 hover:border-primary/30 hover:text-foreground`, isVisible ? "opacity-100" : "opacity-0")}>
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
-                      {value.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
 
-            {/* Visual Element */}
-            <div className="mt-8 p-6 rounded-2xl bg-linear-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20">
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="text-3xl font-bold text-primary">V</span>
-                  </div>
-                  <div className="absolute -inset-2 rounded-full border border-primary/30 animate-pulse" />
+                    <div className={cn("transition-all duration-1000 delay-200", isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10")}>
+                        <div className="grid sm:grid-cols-2 gap-6">
+                            {VALUES.map((value, index) => 
+                            {
+                                return (
+                                    <div key={value.title} style={{ transitionDelay: `${300 + index * 100}ms` }}
+                                        className={cn(`group p-6 rounded-2xl bg-card/30 border border-border/50 backdrop-blur-sm transition-all duration-500
+                                            hover:border-primary/30 hover:bg-card/50`, isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}>
+
+                                        <div className="p-3 w-fit rounded-xl bg-primary/10 text-primary mb-4 transition-all duration-300 group-hover:bg-primary 
+                                                group-hover:text-primary-foreground group-hover:shadow-[0_0_20px_rgba(98,222,99,0.3)]">
+                                            <value.icon size={24} />
+                                        </div>
+
+                                        <h3 className="text-lg font-semibold text-foreground mb-2">
+                                            {value.title}
+                                        </h3>
+
+                                        <p className="text-sm text-muted-foreground leading-relaxed">
+                                            {value.description}
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        <div className="mt-8 p-6 rounded-2xl bg-linear-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20">
+                            <div className="flex items-center gap-4">
+                                <div className="relative">
+                                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                                        <span className="text-3xl font-bold text-primary">V</span>
+                                    </div>
+                                    <div className="absolute -inset-2 rounded-full border border-primary/30 animate-pulse" />
+                                </div>
+                                <div>
+                                    <p className="font-semibold text-foreground">Vectoo</p>
+                                    <p className="text-sm text-muted-foreground"> Vetor de inovação para seu negócio </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground">Vectoo</p>
-                  <p className="text-sm text-muted-foreground">
-                    Vetor de inovação para seu negócio
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 }

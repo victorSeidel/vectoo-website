@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import { Send, Mail, MapPin, Phone, MessageCircle, CheckCircle2, Loader2 } from "lucide-react";
+import { Send, Mail, Phone, MessageCircle, CheckCircle2, Loader2 } from "lucide-react";
 
 import emailjs from "@emailjs/browser";
 
@@ -9,8 +9,8 @@ import { COMPANY } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/UI/Button";
-import { Input } from "@/components/UI/input";
-import { Textarea } from "@/components/UI/textarea";
+import { Input } from "@/components/UI/Input";
+import { Textarea } from "@/components/UI/Textarea";
 
 export function ContactSection() 
 {
@@ -18,7 +18,7 @@ export function ContactSection()
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
 
-    const handleSubmit = async (e: React.FormEvent) => 
+    const handleSubmit = async (e: React.SubmitEvent) => 
     {
         e.preventDefault();
         setIsSubmitting(true);
@@ -29,8 +29,8 @@ export function ContactSection()
                 { name: formData.name, email: formData.email, subject: formData.subject, message: formData.message }, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
 
             setIsSubmitted(true);
-            setFormData({ name: "", email: "", subject: "", message: "" });
 
+            setFormData({ name: "", email: "", subject: "", message: "" });
             setTimeout(() => setIsSubmitted(false), 5000);
         } 
         catch (error) { alert("Erro ao enviar a mensagem. Tente novamente."); } 
@@ -91,14 +91,6 @@ export function ContactSection()
                                     <p className="text-foreground font-medium">{COMPANY.phone}</p>
                                 </div>
                             </a>
-
-                            <div className="flex items-center gap-4 p-4 rounded-xl bg-card/30 border border-border/50">
-                                <div className="p-3 rounded-lg bg-primary/10 text-primary"> <MapPin size={20} /> </div>
-                                <div>
-                                    <p className="text-sm text-muted-foreground">Localização</p>
-                                    <p className="text-foreground font-medium"> {COMPANY.location} </p>
-                                </div>
-                            </div>
                         </div>
 
                         <div className="mt-10 p-4 rounded-xl bg-background/50 border border-border/50 font-mono text-sm hidden md:block">
@@ -137,80 +129,31 @@ export function ContactSection()
                             <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid sm:grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                <label
-                                    htmlFor="name"
-                                    className="text-sm font-medium text-foreground"
-                                >
-                                    Nome
-                                </label>
-                                <Input
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    placeholder="Seu nome"
-                                    required
-                                    className="bg-background/50 border-border/50 focus:border-primary"
-                                />
+                                    <label htmlFor="name" className="text-sm font-medium text-foreground"> Nome </label>
+                                    <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Seu nome" required
+                                        className="bg-background/50 border-border/50 focus:border-primary" />
                                 </div>
+
                                 <div className="space-y-2">
-                                <label
-                                    htmlFor="email"
-                                    className="text-sm font-medium text-foreground"
-                                >
-                                    Email
-                                </label>
-                                <Input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="seu@email.com"
-                                    required
-                                    className="bg-background/50 border-border/50 focus:border-primary"
-                                />
+                                    <label htmlFor="email" className="text-sm font-medium text-foreground"> Email </label>
+                                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="seu@email.com" required
+                                        className="bg-background/50 border-border/50 focus:border-primary" />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <label
-                                htmlFor="subject"
-                                className="text-sm font-medium text-foreground"
-                                >
-                                Assunto
-                                </label>
-                                <Input
-                                id="subject"
-                                name="subject"
-                                value={formData.subject}
-                                onChange={handleChange}
-                                placeholder="Sobre o que gostaria de falar?"
-                                required
-                                className="bg-background/50 border-border/50 focus:border-primary"
-                                />
+                                <label htmlFor="subject" className="text-sm font-medium text-foreground"> Assunto </label>
+                                <Input id="subject" name="subject" value={formData.subject} onChange={handleChange} placeholder="Sobre o que gostaria de falar?" required
+                                    className="bg-background/50 border-border/50 focus:border-primary" />
                             </div>
 
                             <div className="space-y-2">
-                                <label
-                                htmlFor="message"
-                                className="text-sm font-medium text-foreground"
-                                >
-                                Mensagem
-                                </label>
-                                <Textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                placeholder="Conte-nos mais sobre seu projeto..."
-                                required
-                                rows={5}
-                                className="bg-background/50 border-border/50 focus:border-primary resize-none"
-                                />
+                                <label htmlFor="message" className="text-sm font-medium text-foreground"> Mensagem </label>
+                                <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Conte-nos sobre seu projeto..." required
+                                    className="bg-background/50 border-border/50 focus:border-primary resize-none" />
                             </div>
 
-                                <Button type="submit" disabled={isSubmitting} className="w-full py-6" >
+                                <Button type="submit" disabled={isSubmitting} className="w-full py-6 font-semibold" >
                                     {isSubmitting 
                                         ? ( <> <Loader2 className="mr-2 animate-spin" size={20} /> Enviando... </> ) 
                                         : ( <> Enviar mensagem <Send className="ml-2" size={18} /> </> )}
@@ -220,9 +163,7 @@ export function ContactSection()
 
                             <div className="mt-6">
                                 <a href={`https://wa.me/${COMPANY.phone.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="block" >
-                                    <Button type="button" variant="outline"
-                                        className="w-full py-6 text-base font-semibold border-primary text-primary 
-                                            hover:bg-primary hover:text-white transition-all duration-300" >
+                                    <Button type="button" variant="outline" className="w-full py-6 font-semibold" >
                                         <MessageCircle className="mr-2" /> Entrar em contato pelo WhatsApp
                                     </Button>
                                 </a>

@@ -2,11 +2,11 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Heart } from "lucide-react";
+import { Building, Camera } from "lucide-react";
 
 import { COMPANY, NAV_LINKS, SERVICES, SOCIAL_LINKS } from "@/lib/constants";
 
-const socialIcons = { github: Heart, linkedin: Heart, instagram: Heart, twitter: Heart };
+const socialIcons = { instagram: Camera, linkedin: Building  };
 
 export function Footer()
 {
@@ -29,7 +29,7 @@ export function Footer()
                             </span>
                         </Link>
 
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                        <p className="mb-6 text-muted-foreground text-sm leading-relaxed">
                             Transformamos ideias em soluções digitais inovadoras. Tecnologia sob medida para impulsionar o seu negócio.
                         </p>
 
@@ -37,7 +37,7 @@ export function Footer()
                             {SOCIAL_LINKS.map((social) => {
                                 const Icon = socialIcons[social.icon as keyof typeof socialIcons];
                                 return (
-                                    <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}
+                                    <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} title={social.name}
                                             className="p-2.5 text-muted-foreground hover:text-primary bg-secondary/50 hover:bg-primary/10 rounded-lg transition-all duration-300" >
                                         <Icon size={18} />
                                     </a>
@@ -48,7 +48,7 @@ export function Footer()
 
                     <div>
                         <h4 className="font-semibold text-foreground mb-4">Navegação</h4>
-                        <ul className="space-y-3">
+                        <ul className="space-y-2">
                             {NAV_LINKS.map((link) => (
                                 <li key={link.href}>
                                     <Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm" >
@@ -61,7 +61,7 @@ export function Footer()
 
                     <div>
                         <h4 className="font-semibold text-foreground mb-4">Serviços</h4>
-                        <ul className="space-y-3">
+                        <ul className="space-y-2">
                             {SERVICES.map((service) => (
                                 <li key={service.id}>
                                     <Link href={`#servicos`} className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm" >
@@ -74,24 +74,17 @@ export function Footer()
 
                     <div>
                         <h4 className="font-semibold text-foreground mb-4">Contato</h4>
-                        <ul className="space-y-3 text-sm text-muted-foreground">
+                        <ul className="space-y-2 text-sm text-muted-foreground">
                             <li>
-                                <a href={`mailto:${COMPANY.email}`} className="hover:text-primary transition-colors duration-300" >
-                                    {COMPANY.email}
-                                </a>
+                                <a href={`mailto:${COMPANY.email}`} className="hover:text-primary transition-colors duration-300"> {COMPANY.email} </a>
                             </li>
                             <li>
-                                <a href={`tel:${COMPANY.phone.replace(/\D/g, "")}`} className="hover:text-primary transition-colors duration-300">
-                                    {COMPANY.phone}
-                                </a>
-                            </li>
-                            <li>
-                                {COMPANY.location}
+                                <a href={`tel:${COMPANY.phone.replace(/\D/g, "")}`} className="hover:text-primary transition-colors duration-300"> {COMPANY.phone} </a>
                             </li>
                         </ul>
 
-                        <div className="mt-6 p-4 rounded-xl bg-primary/5 border border-primary/10">
-                            <p className="text-sm text-foreground font-medium mb-2"> Pronto para começar? </p>
+                        <div className="flex justify-center items-center gap-2 mt-4 p-4 bg-primary/5 border border-primary/10 rounded-xl">
+                            <p className="text-sm text-foreground font-medium"> Pronto para começar? </p>
                             <Link href="#contato" className="text-primary text-sm font-medium hover:underline" > Fale conosco → </Link>
                         </div>
                     </div>
