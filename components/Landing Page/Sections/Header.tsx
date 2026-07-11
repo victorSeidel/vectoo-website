@@ -30,7 +30,7 @@ export function Header()
                 <nav className="flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="relative w-10 h-10 overflow-hidden rounded-lg transition-transform duration-300 group-hover:scale-110">
-                            <Image src={COMPANY.logoUrl} alt={"Logo" + COMPANY.name} fill priority className="object-cover" />
+                            <Image src={COMPANY.logoUrl} alt="Logo Vectoo" width={40} height={40} priority className="object-cover" />
                         </div>
                         <span className="text-xl font-bold text-foreground tracking-tight">
                             {COMPANY.name}

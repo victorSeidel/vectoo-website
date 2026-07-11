@@ -27,7 +27,7 @@ export function FloatingCTA()
 
             <button type="button" onClick={scrollToTop} aria-label="Voltar ao topo"
                 className="flex items-center justify-center p-3 rounded-full bg-secondary/80 backdrop-blur-sm border border-border/50 text-muted-foreground 
-                    hover:text-foreground hover:border-primary/30 transition-all duration-300 hover:scale-110 cursor-pointer" >
+                    hover:text-foreground hover:border-primary/30 transition-all duration-300 hover:scale-110" >
                 <ArrowUp size={20} />
             </button>
 
@@ -40,8 +40,8 @@ export function FloatingCTA()
                     </div>
                 )}
                 <button type="button" onClick={scrollToContact} onMouseEnter={() => setShowTooltip(true)} onMouseLeave={() => setShowTooltip(false)}
-                    aria-label="Entrar em contato" className="p-4 rounded-full bg-primary text-primary-foreground shadow-[0_0_20px_rgba(98,222,99,0.3)] 
-                        hover:shadow-[0_0_30px_rgba(98,222,99,0.5)] transition-all duration-300 hover:scale-110 animate-pulse-glow cursor-pointer" >
+                    aria-label="Entrar em contato" className="p-4 rounded-full bg-primary text-primary-foreground shadow-[0_0_20px_rgba(98,222,99,0.3)]
+                        transition-transform duration-300 hover:scale-110 animate-pulse" >
                     <MessageCircle size={24} />
                 </button>
             </div>

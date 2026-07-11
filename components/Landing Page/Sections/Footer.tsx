@@ -14,6 +14,7 @@ export function Footer()
 
     return (
         <footer className="relative border-t border-border/30 bg-card/20">
+            <h2 hidden > Rodapé </h2>
             <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent" />
 
             <div className="container mx-auto px-4 md:px-6">
@@ -21,7 +22,7 @@ export function Footer()
                     <div className="lg:col-span-1">
                         <Link href="/" className="flex items-center gap-3 mb-6 group">
                             <div className="relative w-10 h-10 overflow-hidden rounded-lg transition-transform duration-300 group-hover:scale-110">
-                                <Image src={COMPANY.logoUrl} alt={COMPANY.name} fill className="object-cover" />
+                                <Image src={COMPANY.logoUrl} alt="Logo Vectoo" width={40} height={40} loading="lazy" className="object-cover" />
                             </div>
 
                             <span className="text-xl font-bold text-foreground tracking-tight">
@@ -47,7 +48,7 @@ export function Footer()
                     </div>
 
                     <div>
-                        <h4 className="font-semibold text-foreground mb-4">Navegação</h4>
+                        <h3 className="font-semibold text-foreground mb-4">Navegação</h3>
                         <ul className="space-y-2">
                             {NAV_LINKS.map((link) => (
                                 <li key={link.href}>
@@ -60,7 +61,7 @@ export function Footer()
                     </div>
 
                     <div>
-                        <h4 className="font-semibold text-foreground mb-4">Serviços</h4>
+                        <h3 className="font-semibold text-foreground mb-4">Serviços</h3>
                         <ul className="space-y-2">
                             {SERVICES.map((service) => (
                                 <li key={service.id}>
@@ -73,7 +74,7 @@ export function Footer()
                     </div>
 
                     <div>
-                        <h4 className="font-semibold text-foreground mb-4">Contato</h4>
+                        <h3 className="font-semibold text-foreground mb-4">Contato</h3>
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li>
                                 <a href={`mailto:${COMPANY.email}`} className="hover:text-primary transition-colors duration-300"> {COMPANY.email} </a>

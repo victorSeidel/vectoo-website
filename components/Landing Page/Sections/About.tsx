@@ -84,9 +84,9 @@ export function AboutSection()
                         </div>
 
                         <div className="mt-10">
-                            <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+                            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
                                 Tecnologias que dominamos
-                            </h4>
+                            </h3>
 
                             <div className="flex flex-wrap gap-2">
                                 {TECHNOLOGIES.map(tech => (
