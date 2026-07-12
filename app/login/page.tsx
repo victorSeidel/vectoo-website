@@ -6,6 +6,8 @@ import { LoginForm } from '@/components/LoginForm';
 export default async function LoginPage()
 {
     return (
-        <LoginForm />
+        <div className="w-full min-h-screen flex flex-col justify-center items-center">
+            <LoginForm />
+        </div>
     )
 }

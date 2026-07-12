@@ -1,7 +1,7 @@
 "use server";
 import { redirect } from 'next/navigation';
 
-import { createSession, deleteSession } from '@/lib/login';
+import { createSession, deleteSession } from '@/lib/session';
 import { verifyPassword } from '@/lib/password';
 
 export async function loginAction(state: { username: string; error: string; }, formData: FormData)
@@ -25,5 +25,5 @@ export async function loginAction(state: { username: string; error: string; }, f
 export async function logoutAction()
 {
     await deleteSession();
-    redirect('/blog');
+    redirect('/login');
 }

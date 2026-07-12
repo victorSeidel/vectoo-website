@@ -4,17 +4,31 @@ export const metadata: Metadata = { title: 'Posts' };
 import Link from 'next/link';
 
 import { findAllPosts } from '@/queries/post-queries';
+
+import { Button } from '@/components/UI/Button';
+
 export default async function AdminPostsPage()
 {
     const posts = await findAllPosts();
 
     return (
-        <div className="container flex flex-col justify-center items-center gap-8 mx-auto py-24">
-            <h1 className="text-xl"> Lista de Posts </h1>
+        <div className="container flex flex-col justify-center items-center gap-8 mx-auto py-16">
+            <div className="w-full flex justify-between items-center" >
+                <h1 className="text-xl"> Lista de Posts </h1>
 
+                <div className="space-x-2">
+                    <Button asChild variant="outline" >
+                        <Link href='/admin' > Voltar </Link>
+                    </Button>
+                    <Button asChild >
+                        <Link href='/admin/posts/new' > Novo Post </Link>
+                    </Button>
+                </div>
+            </div>
+            
             <div className="grid grid-cols-3 gap-8">
                 {posts.map((post) => ( 
-                    <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm
+                    <article key={post.id} className="group relative flex flex-col overflow-hidden rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm
                             transition-all duration-500 hover:border-primary/30 hover:shadow-[0_0_40px_rgba(98,222,99,0.1)]">
 
                         <Link href={`/admin/posts/${post.id}`} className="flex flex-col h-full">

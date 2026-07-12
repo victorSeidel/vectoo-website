@@ -1,5 +1,6 @@
 "use client";
 import { useActionState } from "react";
+import Link from "next/link";
 
 import { makePartialPost, Post } from "@/models/post-model";
 import { POST_CATEGORIES } from "@/lib/constants";
@@ -32,12 +33,15 @@ export function PostForm(props: { title: string } & PostFormProps)
     }
 
     return (
-        <div className="flex flex-col justify-center items-center gap-8 py-8" >
-            <h1 className="text-lg">
-                {title}
-            </h1>
+        <div className="container flex flex-col justify-center items-center gap-8 py-8" >
+            <div className="w-full flex justify-between items-center" >
+                <h1 className="text-xl"> {title}</h1>
+                <Button asChild variant="outline" >
+                    <Link href='/admin/posts' > Voltar </Link>
+                </Button>
+            </div>
 
-            <form action={action} className="w-7xl flex flex-col gap-8" >
+            <form action={action} className="w-full flex flex-col gap-8" >
                 <div className="grid grid-cols-2 gap-8">
                     <div className="flex flex-col gap-4">
                         <div className="flex gap-4" hidden >

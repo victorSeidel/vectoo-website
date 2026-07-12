@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Painel Administrativo | Vectoo', robots: { index: false, follow: false, nocache: true } };
+export const metadata: Metadata = { title: { default: 'Painel | Admin Vectoo', template: '%s | Admin Vectoo' } };
 
-import { requireSessionOrRedirect } from "@/lib/login";
+import { requireSessionOrRedirect } from "@/lib/session";
 
 export default async function AdminLayout({ children }: Readonly<{ children: React.ReactNode; }>)
 {
     await requireSessionOrRedirect();
 
     return (
-        <>
+        <div className="w-full min-h-screen flex flex-col justify-center items-center">
             {children}
-        </>
+        </div>
     );
 }

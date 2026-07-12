@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Editar Post | Vectoo' };
+export const metadata: Metadata = { title: 'Editar Post' };
 
 import { notFound } from 'next/navigation';
 

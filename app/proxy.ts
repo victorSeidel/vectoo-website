@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { verifyJwt } from '@/lib/login';
+import { verifyJwt } from '@/lib/session';
 
 export async function proxy(request: NextRequest)
 {

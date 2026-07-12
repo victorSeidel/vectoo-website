@@ -2,7 +2,7 @@
 import { revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-import { verifySession } from '@/lib/login';
+import { verifySession } from '@/lib/session';
 
 import { CreatePostDto, makePartialPost, Post, UpdatePostDto } from "@/models/post-model";
 import { postRepository } from '@/repositories/post-repository';
