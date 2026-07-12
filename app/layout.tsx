@@ -9,7 +9,11 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: '--font-jet
 
 export const metadata: Metadata = 
 {
-    title: 'Vectoo | Soluções em Tecnologia',
+    title:
+    {
+        default: 'Vectoo | Soluções em Tecnologia',
+        template: '%s | Vectoo',
+    },
     description: 'Desenvolvimento de sites, sistemas, bots, CRMs e consultoria especializada em tecnologia. Transformamos ideias em soluções digitais inovadoras.',
     keywords: ['desenvolvimento web', 'sistemas', 'consultoria tecnologia', 'CRM', 'bots', 'segurança digital'],
     authors: [{ name: 'Vectoo' }],

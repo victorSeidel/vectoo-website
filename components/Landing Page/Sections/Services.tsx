@@ -14,7 +14,7 @@ export function ServicesSection()
     const activeServiceData = SERVICES.find((s) => s.id === activeService);
 
     return (
-        <section id="servicos" className="relative py-24 md:py-32 overflow-hidden">
+        <section id="servicos" className="relative py-12 md:py-32 overflow-hidden">
             <div className="absolute top-0 right-0 w-125 h-125 bg-primary/5 rounded-full blur-[150px]" />
             <div className="absolute bottom-0 left-0 w-100 h-100 bg-primary/5 rounded-full blur-[120px]" />
 

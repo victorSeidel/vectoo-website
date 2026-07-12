@@ -3,10 +3,10 @@ import type { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots
 {
     return {
-        rules: 
+        rules:
         {
             userAgent: '*',
-            allow: '/',
+            disallow: ['/admin/', '/login'],
         },
         
         sitemap: 'https://vectoo.com.br/sitemap.xml',

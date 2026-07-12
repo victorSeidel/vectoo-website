@@ -11,11 +11,12 @@ export const COMPANY =
 
 export const NAV_LINKS = 
 [
-    { href: "#inicio", label: "Início" },
-    { href: "#servicos", label: "Serviços" },
-    { href: "#sobre", label: "Sobre" },
-    { href: "#portfolio", label: "Portfólio" },
-    { href: "#contato", label: "Contato" },
+    { href: "/#inicio", label: "Início" },
+    { href: "/#servicos", label: "Serviços" },
+    { href: "/#sobre", label: "Sobre" },
+    { href: "/#portfolio", label: "Portfólio" },
+    { href: "/blog", label: "Blog" },
+    { href: "/#contato", label: "Contato" },
 ] as const;
 
 export const SERVICES = 
@@ -86,12 +87,6 @@ export const SERVICES =
     },
 ] as const;
 
-export const SOCIAL_LINKS = 
-[
-    { name: "Instagram", href: "https://instagram.com/vectoo.br", icon: "instagram" },
-    { name: "LinkedIn", href: "https://linkedin.com/company/vectoo", icon: "linkedin" },
-] as const;
-
 export const TECHNOLOGIES = 
 [
     "React", "Next.js", "Node.js", "TypeScript", "Tailwind CSS",
@@ -102,3 +97,8 @@ export const TECHNOLOGIES =
     "AWS", "Docker", "Redis",
     "GraphQL", "APIs REST",
 ] as const;
+
+export const POST_CATEGORIES =
+[
+    "Desenvolvimento", "Automação", "Consultoria"
+];

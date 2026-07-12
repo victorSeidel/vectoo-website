@@ -73,7 +73,7 @@ export function PortfolioSection()
     const filteredProjects = activeCategory === "Todos" ? PORTFOLIO : PORTFOLIO.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="portfolio" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="portfolio" className="relative py-12 md:py-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-linear-to-b from-background via-card/20 to-background" />
 

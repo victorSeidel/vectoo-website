@@ -57,7 +57,7 @@ export function AboutSection()
     );
 
     return (
-        <section id="sobre" ref={sectionRef} className="relative py-24 md:py-32 overflow-hidden" >
+        <section id="sobre" ref={sectionRef} className="relative py-12 md:py-24 overflow-hidden" >
             <BackgroundElements />
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">

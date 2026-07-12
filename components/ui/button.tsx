@@ -14,7 +14,7 @@ const buttonVariants = cva(
             variant: 
             {
                 default: 'text-primary-foreground bg-primary hover:bg-primary/90 shadow-lg hover:shadow-primary/50',
-                destructive: 'text-white bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20',
+                destructive: 'text-white bg-destructive hover:bg-destructive/60 focus-visible:ring-destructive/20',
                 outline: 'text-primary hover:text-white bg-transparent hover:bg-primary/50 border border-primary hover:border-primary/50 shadow-sm hover:shadow-primary/50',
                 secondary: 'text-secondary-foreground bg-secondary hover:bg-secondary/80',
                 ghost:'hover:bg-accent hover:text-accent-foreground',
@@ -33,10 +33,11 @@ const buttonVariants = cva(
     },
 )
 
-function Button({ className, variant, size, asChild = false, ...props }: React.ComponentProps<'button'> & VariantProps<typeof buttonVariants> & { asChild?: boolean })
+function Button({ className, variant, size, asChild = false, full = false, ...props }: 
+    React.ComponentProps<'button'> & VariantProps<typeof buttonVariants> & { asChild?: boolean; full?: boolean; })
 {
     const Comp = asChild ? Slot : 'button'
-    return ( <Comp data-slot="button" className={cn(buttonVariants({ variant, size, className }))} {...props} /> )
+    return ( <Comp data-slot="button" className={cn(buttonVariants({ variant, size, className }), full && 'w-full')} {...props} /> )
 }
 
 export { Button, buttonVariants }

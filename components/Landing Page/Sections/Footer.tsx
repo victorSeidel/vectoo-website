@@ -2,11 +2,16 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Building, Camera } from "lucide-react";
+import { Building, Camera, Library } from "lucide-react";
 
-import { COMPANY, NAV_LINKS, SERVICES, SOCIAL_LINKS } from "@/lib/constants";
+import { COMPANY, NAV_LINKS, SERVICES } from "@/lib/constants";
 
-const socialIcons = { instagram: Camera, linkedin: Building  };
+export const SOCIAL_LINKS = 
+[
+    { name: "Instagram", href: "https://instagram.com/vectoo.br", icon: Camera },
+    { name: "LinkedIn", href: "https://linkedin.com/company/vectoo", icon: Building },
+    { name: "Blog", href: "/blog", icon: Library },
+] as const;
 
 export function Footer()
 {
@@ -35,12 +40,12 @@ export function Footer()
                         </p>
 
                         <div className="flex gap-3">
-                            {SOCIAL_LINKS.map((social) => {
-                                const Icon = socialIcons[social.icon as keyof typeof socialIcons];
+                            {SOCIAL_LINKS.map((social) =>
+                            {
                                 return (
                                     <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} title={social.name}
                                             className="p-2.5 text-muted-foreground hover:text-primary bg-secondary/50 hover:bg-primary/10 rounded-lg transition-all duration-300" >
-                                        <Icon size={18} />
+                                        <social.icon size={18} />
                                     </a>
                                 );
                             })}

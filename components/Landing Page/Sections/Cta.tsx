@@ -8,7 +8,7 @@ import { Button } from "@/components/UI/Button";
 export function CTASection()
 {
   return (
-        <section className="relative py-24 overflow-hidden">
+        <section className="relative py-12 md:py-24 overflow-hidden">
             <div className="absolute inset-0 bg-linear-to-r from-primary/5 via-primary/10 to-primary/5" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-linear-to-r from-transparent via-primary/50 to-transparent" />
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-linear-to-r from-transparent via-primary/50 to-transparent" />

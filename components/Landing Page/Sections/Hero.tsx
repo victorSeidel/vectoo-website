@@ -1,87 +1,16 @@
-"use client";
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 
 import { ArrowRight, Sparkles } from "lucide-react";
 
 import { COMPANY } from "@/lib/constants";
+
 import { AnimatedCode } from "@/components/Landing Page/AnimatedCode";
+import { ParticlesBackground } from "@/components/Landing Page/ParticlesBackground";
 
 import { Button } from "@/components/UI/Button";
 
 export function HeroSection() 
 {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-
-    useEffect(() =>
-    {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-
-        const resizeCanvas = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-        resizeCanvas();
-        window.addEventListener("resize", resizeCanvas);
-
-        const particles: Array<{ x: number; y: number; vx: number; vy: number; size: number; opacity: number; }> = [];
-
-        for (let i = 0; i < 50; i++) 
-        {
-            particles.push({
-                x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 2 + 1, opacity: Math.random() * 0.5 + 0.1,
-            });
-        }
-
-        const animate = () => 
-        {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach((p) => 
-            {
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(98, 222, 99, ${p.opacity})`;
-                ctx.fill();
-            });
-
-            particles.forEach((p1, i) => 
-            {
-                particles.slice(i + 1).forEach((p2) => 
-                {
-                    const dx = p1.x - p2.x;
-                    const dy = p1.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 150) 
-                    {
-                        ctx.beginPath();
-                        ctx.moveTo(p1.x, p1.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(98, 222, 99, ${0.1 * (1 - dist / 150)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                });
-            });
-
-            requestAnimationFrame(animate);
-        };
-
-        animate();
-
-        return () => window.removeEventListener("resize", resizeCanvas);
-    }, []);
-
     const STATS = 
     [
         { value: "50+",  label: "Projetos Entregues" },
@@ -92,8 +21,7 @@ export function HeroSection()
 
     return (
         <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden" >
-            <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
-
+            <ParticlesBackground />
             <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-float" />
             <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-primary/10 rounded-full blur-[100px] animate-float delay-300" />
 
@@ -115,13 +43,13 @@ export function HeroSection()
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up delay-300">
-                        <Button variant="outline" size="lg" >
+                        <Button variant="outline" size="lg" className="w-48" >
                             <Link href="#portfolio">
                                 Ver Projetos
                             </Link>
                         </Button>
 
-                        <Button asChild size="lg" >
+                        <Button asChild size="lg" className="w-48" >
                             <Link href="#contato">
                                 Iniciar Projeto <ArrowRight className="ml-2" size={18} />
                             </Link>
