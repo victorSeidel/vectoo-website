@@ -32,41 +32,44 @@ export function PostForm(props: { title: string } & PostFormProps)
     }
 
     return (
-        <div className="flex flex-col justify-center items-center gap-8" >
+        <div className="flex flex-col justify-center items-center gap-8 py-8" >
             <h1 className="text-lg">
                 {title}
             </h1>
 
-            <form action={action} className="w-4xl max-w-4xl flex flex-col gap-6" >
-                <div className="flex gap-4" hidden >
-                    <Input label='ID' name='id' placeholder='ID gerado automaticamente' type='text' defaultValue={formState.id} disabled={isPending} readOnly full />
-                    <Input label='Slug' name='slug' placeholder='Slug gerada automaticamente' type='text' defaultValue={formState.slug} disabled={isPending} readOnly full />
-                </div>
+            <form action={action} className="w-7xl flex flex-col gap-8" >
+                <div className="grid grid-cols-2 gap-8">
+                    <div className="flex flex-col gap-4">
+                        <div className="flex gap-4" hidden >
+                            <Input label='ID' name='id' defaultValue={formState.id} disabled={isPending} readOnly full />
+                            <Input label='Slug' name='slug' defaultValue={formState.slug} disabled={isPending} readOnly full />
+                        </div>
 
-                <div className="flex gap-4" >
-                    <Input label='Autor' name='author' placeholder='Digite o nome do autor' type='text' defaultValue={formState.author} disabled={isPending} full />
-                    <Input label='Título' name='title' placeholder='Digite o título' type='text' defaultValue={formState.title} disabled={isPending} full />
-                </div>
+                        <Input label='Título' name='title' placeholder='Digite o título' defaultValue={formState.title} disabled={isPending} required full />
 
-                <div className="flex gap-4" >
-                    <Input label='Categoria' name='category' placeholder='Categoria principal' type='text' defaultValue={formState.category} disabled={isPending} full />
-                    <Multiselect label='Tags' name='tags' options={POST_CATEGORIES} defaultValue={formState.tags} disabled={isPending} full />
-                </div>
+                        <Input label='Autor' name='author' placeholder='Digite o nome' defaultValue={formState.author} disabled={isPending} required full />
+                        <Input label='Rede Social do Autor' name='authorSocial' placeholder='Cole o link' defaultValue={formState.authorSocial} disabled={isPending} full />
 
-                <Textarea label='Excerto' name='excerpt' placeholder='Digite o resumo' rows={3} defaultValue={formState.excerpt} disabled={isPending} />
-                <Textarea label='Conteúdo' name='content' placeholder='Digite o conteúdo' rows={10} defaultValue={formState.content} disabled={isPending} />
+                        <Input label='Categoria' name='category' placeholder='Categoria principal' defaultValue={formState.category} disabled={isPending} required full />
+                        <Multiselect label='Tags' name='tags' options={POST_CATEGORIES} defaultValue={formState.tags} disabled={isPending} full />
 
-                <div className="flex gap-4" >
-                    <Input label='Imagem de Capa' name='coverImage' placeholder='Digite a url' type='text' defaultValue={formState.coverImage} disabled={isPending} full />
-                    <div className="flex gap-4" >
-                        <Input label='Tempo de Leitura' name='readTime' type='number' defaultValue={formState.readTime} disabled={isPending} full />
-                        <Input label='Publicar?' name='published' type='checkbox' defaultChecked={formState.published} disabled={isPending} />
+                        <Input label='Imagem de Capa' name='coverImage' placeholder='Cole a url' defaultValue={formState.coverImage} disabled={isPending} full />
+
+                        <div className="flex gap-4" >
+                            <Input label='Tempo de Leitura' name='readTime' type='number' defaultValue={formState.readTime} disabled={isPending} full />
+                            <Input label='Publicar?' name='published' type='checkbox' defaultChecked={formState.published} disabled={isPending} />
+                        </div>
+
+                        <div className="flex gap-4 mt-6" >
+                            <Button disabled={isPending} variant="destructive" className="flex-1" onClick={handleDelete} > Excluir </Button>
+                            <Button disabled={isPending} type="submit" className="flex-1" > Salvar </Button>
+                        </div>
                     </div>
-                </div>
 
-                <div className="flex gap-4" >
-                    <Button disabled={isPending} variant="destructive" className="flex-1" onClick={handleDelete} > Excluir </Button>
-                    <Button disabled={isPending} type="submit" className="flex-1" > Salvar </Button>
+                    <div className="flex flex-col gap-4">
+                        <Textarea label='Excerto' name='excerpt' placeholder='Digite o resumo' rows={3} defaultValue={formState.excerpt} disabled={isPending} />
+                        <Textarea label='Conteúdo' name='content' placeholder='Digite o conteúdo' rows={20} defaultValue={formState.content} disabled={isPending} />
+                    </div>
                 </div>
 
                 {!!state.errors && <p className='text-red-500'> {state.errors[0]} </p> }

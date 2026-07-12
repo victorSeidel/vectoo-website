@@ -104,6 +104,7 @@ export function Multiselect({ label, name, options, defaultValue = [], disabled,
                         bg-background
                         shadow-lg
                         p-2
+                        grid grid-cols-3
                     "
                 >
                     {options.map((option) => (

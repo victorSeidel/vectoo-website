@@ -39,9 +39,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <header className="group flex flex-col gap-2 mb-4">
                 {post.title}
 
-                <p className="text-gray-800">
-                    {post.author} | {post.createdAt.toString()}
-                </p>
+                <div className="flex gap-2">
+                    <a href={post.authorSocial} target="_blank" rel="noopener noreferrer" > {post.author} </a>
+                    |
+                    <p className="text-gray-800"> {post.createdAt.toString()} </p>
+                </div>
             </header>
 
             <p className="text-justify text-sm text-gray-600" >

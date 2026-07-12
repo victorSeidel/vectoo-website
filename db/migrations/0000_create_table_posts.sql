@@ -5,6 +5,7 @@ CREATE TABLE posts (
     category VARCHAR(100) NOT NULL,
     tags TEXT[] NOT NULL DEFAULT '{}',
     author VARCHAR(100) NOT NULL,
+    author_social VARCHAR(100),
 
     title VARCHAR(120) NOT NULL,
     excerpt VARCHAR(200) NOT NULL,
@@ -14,8 +15,8 @@ CREATE TABLE posts (
     published BOOLEAN NOT NULL DEFAULT FALSE,
     read_time INTEGER NOT NULL DEFAULT 0,
 
-    created_at TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP NOT NULL
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX idx_posts_slug ON posts(slug);

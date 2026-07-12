@@ -3,7 +3,6 @@ import { revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { verifySession } from '@/lib/login';
-import { makeSlugFromText } from '@/utils/text';
 
 import { CreatePostDto, makePartialPost, Post, UpdatePostDto } from "@/models/post-model";
 import { postRepository } from '@/repositories/post-repository';
@@ -22,7 +21,7 @@ export async function createPostAction(prevState: PostActionState, formData: For
     if (!validation.success) return { formState: makePartialPost(formDataToObj), errors: validation.errors };
 
     const validPostData = validation.data;
-    const newPost: CreatePostDto = { ...validPostData, slug: makeSlugFromText(validPostData.title) };
+    const newPost: CreatePostDto = { ...validPostData };
 
     let post;
     try 
@@ -100,15 +99,16 @@ function validatePost(formData: FormData): | { success: true; data: CreatePostDt
 {
     const data =
     {
-        id: String(formData.get('id') ?? '').trim(),
-        title: String(formData.get('title') ?? '').trim(),
-        slug: String(formData.get('slug') ?? '').trim(),
         category: String(formData.get('category') ?? '').trim(),
         tags: formData.getAll("tags").map(tag => String(tag).trim()).filter(Boolean),
-        content: String(formData.get('content') ?? '').trim(),
         author: String(formData.get('author') ?? '').trim(),
+        authorSocial: String(formData.get('authorSocial') ?? '').trim(),
+
+        title: String(formData.get('title') ?? '').trim(),
+        content: String(formData.get('content') ?? '').trim(),
         excerpt: String(formData.get('excerpt') ?? '').trim(),
         coverImage: String(formData.get('coverImage') ?? '').trim(),
+
         published: ['on', 'true', true].includes(formData.get('published') as never),
         readTime: Number(formData.get('readTime') ?? 0)
     };
