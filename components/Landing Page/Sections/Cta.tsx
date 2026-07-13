@@ -32,14 +32,14 @@ export function CTASection()
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base font-semibold transition-all duration-300 hover:shadow-[0_0_40px_rgba(98,222,99,0.5)] hover:scale-105" >
+                    <Button asChild size="lg" className="w-56" >
                         <Link href="#contato">
                             Começar agora
                             <ArrowRight className="ml-2" size={18} />
                         </Link>
                     </Button>
 
-                    <Button asChild variant="outline" size="lg" className="border-primary/30 hover:border-primary/50 px-8 py-6 text-base font-semibold transition-all duration-300 hover:bg-primary/5 hover:text-white bg-transparent" >
+                    <Button asChild variant="outline" size="lg" className="w-56" >
                         <Link href="#portfolio">
                             Explorar projetos
                         </Link>

@@ -9,7 +9,7 @@ const codeLines: Token[][] =
     [
         { type: "keyword", content: "import" },
         { type: "text", content: " { vectoo } from " },
-        { type: "string", content: "'vectoo'" },
+        { type: "string", content: "'vectoo/sdk'" },
         { type: "text", content: ";" },
     ],
 
@@ -25,21 +25,21 @@ const codeLines: Token[][] =
     ],
 
     [
-        { type: "property", content: "    tecnologia" },
+        { type: "property", content: "    technology" },
         { type: "text", content: ": " },
         { type: "string", content: "'moderna'" },
         { type: "text", content: "," },
     ],
 
     [
-        { type: "property", content: "    qualidade" },
+        { type: "property", content: "    quality" },
         { type: "text", content: ": " },
         { type: "string", content: "'excelente'" },
         { type: "text", content: "," },
     ],
 
     [
-        { type: "property", content: "    suporte" },
+        { type: "property", content: "    support" },
         { type: "text", content: ": " },
         { type: "boolean", content: "true" },
     ],
@@ -69,7 +69,6 @@ const colors =
 export function AnimatedCode() 
 {
     const [visibleLines, setVisibleLines] = useState(0);
-    const [cursorVisible, setCursorVisible] = useState(true);
 
     useEffect(() => 
     {
@@ -90,15 +89,9 @@ export function AnimatedCode()
         return () => clearInterval(lineInterval);
     }, []);
 
-    useEffect(() => 
-    {
-        const cursorInterval = setInterval(() => { setCursorVisible((prev) => !prev); }, 530);
-        return () => clearInterval(cursorInterval);
-    }, []);
-
     return (
         <div className="hidden xl:block absolute right-8 top-1/2 -translate-y-1/2 w-100">
-            <div className="relative p-6 rounded-2xl bg-card/30 border border-border/30 backdrop-blur-xl shadow-2xl">
+            <div className="relative p-4 rounded-2xl bg-card/30 border border-border/30 backdrop-blur-xl shadow-2xl">
                 <div className="flex items-center gap-2 mb-4 pb-4 border-b border-border/20">
                     <div className="w-3 h-3 rounded-full bg-red-500/70" />
                     <div className="w-3 h-3 rounded-full bg-yellow-500/70" />

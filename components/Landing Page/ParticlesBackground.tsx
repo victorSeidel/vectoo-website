@@ -13,35 +13,31 @@ export function ParticlesBackground({ className = "" }: { className?: string; })
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
+        let width = 0;
+        let height = 0;
+
         const resizeCanvas = () => 
         {
             const parent = canvas.parentElement;
             if (!parent) return;
 
-            canvas.width = parent.clientWidth;
-            canvas.height = parent.clientHeight;
+            width = parent.clientWidth;
+            height = parent.clientHeight;
+
+            canvas.width = width * 1;
+            canvas.height = height * 1;
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
         };
 
         resizeCanvas();
 
-        const observer = new ResizeObserver(resizeCanvas);
-        if (canvas.parentElement) observer.observe(canvas.parentElement);
-
-        const particles:
-        {
-            x: number;
-            y: number;
-            vx: number;
-            vy: number;
-            size: number;
-            opacity: number;
-        }[] = [];
+        const particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number; }[] = [];
 
         for (let i = 0; i < 50; i++) 
         {
             particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
+                x: Math.random() * width,
+                y: Math.random() * height,
                 vx: (Math.random() - 0.5) * 0.5,
                 vy: (Math.random() - 0.5) * 0.5,
                 size: Math.random() * 2 + 1,
@@ -50,18 +46,23 @@ export function ParticlesBackground({ className = "" }: { className?: string; })
         }
 
         let animationId: number;
+        let isVisible = true;
 
         const animate = () =>
         {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            animationId = requestAnimationFrame(animate);
+
+            if (!isVisible) return;
+
+            ctx.clearRect(0, 0, width, height);
 
             particles.forEach((p) =>
             {
                 p.x += p.vx;
                 p.y += p.vy;
 
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
 
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -69,35 +70,46 @@ export function ParticlesBackground({ className = "" }: { className?: string; })
                 ctx.fill();
             });
 
-            particles.forEach((p1, i) =>
+            const maxDist = 150;
+            const maxDistSq = maxDist * maxDist;
+
+            for (let i = 0; i < particles.length; i++)
             {
-                particles.slice(i + 1).forEach((p2) => 
+                const p1 = particles[i];
+                for (let j = i + 1; j < particles.length; j++)
                 {
+                    const p2 = particles[j];
                     const dx = p1.x - p2.x;
                     const dy = p1.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const distSq = dx * dx + dy * dy;
 
-                    if (dist < 150)
+                    if (distSq < maxDistSq)
                     {
+                        const dist = Math.sqrt(distSq);
                         ctx.beginPath();
                         ctx.moveTo(p1.x, p1.y);
                         ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(98,222,99,${0.1 * (1 - dist / 150)})`;
+                        ctx.strokeStyle = `rgba(98,222,99,${0.1 * (1 - dist / maxDist)})`;
                         ctx.lineWidth = 0.5;
                         ctx.stroke();
                     }
-                });
-            });
-
-            animationId = requestAnimationFrame(animate);
+                }
+            }
         };
+
+        const resizeObserver = new ResizeObserver(resizeCanvas);
+        if (canvas.parentElement) resizeObserver.observe(canvas.parentElement);
+
+        const intersectionObserver = new IntersectionObserver(([entry]) => { isVisible = entry.isIntersecting; }, { threshold: 0 });
+        intersectionObserver.observe(canvas);
 
         animate();
 
         return () =>
         {
             cancelAnimationFrame(animationId);
-            observer.disconnect();
+            resizeObserver.disconnect();
+            intersectionObserver.disconnect();
         };
     }, []);
 

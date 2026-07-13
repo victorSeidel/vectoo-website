@@ -2,8 +2,6 @@ import Link from "next/link";
 
 import { ArrowRight, Sparkles } from "lucide-react";
 
-import { COMPANY } from "@/lib/constants";
-
 import { AnimatedCode } from "@/components/Landing Page/AnimatedCode";
 import { ParticlesBackground } from "@/components/Landing Page/ParticlesBackground";
 
@@ -25,11 +23,9 @@ export function HeroSection()
             <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-float" />
             <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-primary/10 rounded-full blur-[100px] animate-float delay-300" />
 
-            <AnimatedCode />
-
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="max-w-5xl mx-auto text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8 animate-fade-in-up">
+                    <div className="mt-12 md:mt-0 mb-6 md:mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium animate-fade-in-up">
                         <Sparkles size={16} />
                         Soluções em Tecnologia
                     </div>
@@ -38,25 +34,26 @@ export function HeroSection()
                         Transformamos ideias em soluções digitais
                     </h1>
 
-                    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200 leading-relaxed">
-                        {COMPANY.description}
+                    <p className="mb-8 md:mb-10 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up delay-200 leading-relaxed">
+                        Transformamos ideias em soluções digitais inovadoras. <br className="hidden md:block" />
+                        Desenvolvemos tecnologia sob medida para impulsionar seu negócio.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up delay-300">
-                        <Button variant="outline" size="lg" className="w-48" >
+                    <div className="mb-12 md:mb-16 flex flex-col md:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300">
+                        <Button variant="outline" size="lg" className="w-56" >
                             <Link href="#portfolio">
                                 Ver Projetos
                             </Link>
                         </Button>
 
-                        <Button asChild size="lg" className="w-48" >
+                        <Button asChild size="lg" className="w-56" >
                             <Link href="#contato">
                                 Iniciar Projeto <ArrowRight className="ml-2" size={18} />
                             </Link>
                         </Button>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 animate-fade-in-up delay-400">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 animate-fade-in-up delay-400">
                         {STATS.map((stat, index) => (
                             <div key={stat.label}
                                 className="relative p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm transition-all duration-300
@@ -73,6 +70,8 @@ export function HeroSection()
                     </div>
                 </div>
             </div>
+
+            <AnimatedCode />
         </section>
     );
 }

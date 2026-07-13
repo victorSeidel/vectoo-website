@@ -19,15 +19,14 @@ export default function HomePage()
             <main>
                 <HeroSection />
                 <TechMarquee />
-                <SectionDivider variant="code" />
                 <ServicesSection />
-                <SectionDivider variant="wave" />
+                <SectionDivider variant="code" />
                 <AboutSection />
                 <SectionDivider variant="dots" />
                 <PortfolioSection />
-                <SectionDivider variant="code" />
-                <TestimonialsSection />
                 <SectionDivider variant="wave" />
+                <TestimonialsSection />
+                <SectionDivider variant="code" />
                 <ContactSection />
                 <CTASection />
             </main>
