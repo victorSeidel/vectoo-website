@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: {  params: Promise<{ slug: st
     return { 
         title: post.title,
         description: post.excerpt,
-        alternates: { canonical: `https://vectoo.com.br/blog/post/${slug}` },
+        alternates: { canonical: `/blog/post/${slug}` },
         openGraph: {
             type: "article",
             locale: "pt_BR",

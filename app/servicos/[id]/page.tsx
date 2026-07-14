@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: {  params: Promise<{ id: stri
         title: service.title,
         description: service.description,
         keywords: [...service.features, ...service.technologies, service.title],
-        alternates: { canonical: `https://vectoo.com.br/servicos/${id}` },
+        alternates: { canonical: `/servicos/${id}` },
         openGraph: {
             type: "website",
             locale: "pt_BR",

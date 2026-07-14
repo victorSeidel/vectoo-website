@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots
             disallow: ['/admin/', '/login'],
         },
         
-        sitemap: 'https://vectoo.com.br/sitemap.xml',
+        sitemap: 'https://www.vectoo.com.br/sitemap.xml',
     }
 }

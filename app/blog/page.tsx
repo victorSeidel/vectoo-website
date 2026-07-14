@@ -3,6 +3,7 @@ export const metadata: Metadata =
 { 
     title: "Blog",
     description: "Artigos, guias e insights sobre desenvolvimento, automação, segurança e tecnologia. Conteúdo prático para impulsionar o seu negócio.",
+    alternates: { canonical: "/blog" },
     openGraph:
     {
         type: "website",

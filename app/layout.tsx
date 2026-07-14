@@ -9,6 +9,8 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: '--font-jet
 
 export const metadata: Metadata = 
 {
+    metadataBase: new URL('https://www.vectoo.com.br'),
+    alternates: { canonical: '/' },
     title:
     {
         default: 'Vectoo | Soluções em Tecnologia',
