@@ -6,6 +6,8 @@ import { Target, Heart, Users, Eye } from "lucide-react";
 import { TECHNOLOGIES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
+import { CodeComment } from "@/components/Landing Page/CodeComment";
+
 const VALUES = 
 [
     {
@@ -63,9 +65,7 @@ export function AboutSection()
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <div className={cn("transition-all duration-1000", isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10")}>
-                        <span className="text-primary font-mono text-sm tracking-wider uppercase mb-4 block">
-                            {"// Quem Somos"}
-                        </span>
+                        <CodeComment text="Quem Somos" />
 
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
                             Tecnologia que transforma

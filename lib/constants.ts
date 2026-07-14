@@ -12,7 +12,7 @@ export const COMPANY =
 export const NAV_LINKS = 
 [
     { href: "/#inicio", label: "Início" },
-    { href: "/#servicos", label: "Serviços" },
+    { href: "/servicos", label: "Serviços" },
     { href: "/#sobre", label: "Sobre" },
     { href: "/#portfolio", label: "Portfólio" },
     { href: "/blog", label: "Blog" },

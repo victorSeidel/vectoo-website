@@ -4,11 +4,11 @@ export interface Service
 {
     id: string;
     icon: LucideIcon;
+    comment: string;
     title: string;
     subtitle: string;
     heroTagline: string;
     description: string;
-    seoDescription: string;
     longDescription: string;
     features: string[];
     benefits: { title: string; description: string; }[];

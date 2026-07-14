@@ -9,6 +9,7 @@ import { COMPANY } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/UI/Button";
+import { CodeComment } from "@/components/Landing Page/CodeComment";
 import { Input } from "@/components/UI/Input";
 import { Textarea } from "@/components/UI/Textarea";
 
@@ -50,9 +51,7 @@ export function ContactSection()
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
                     <div>
-                        <span className="text-primary font-mono text-sm tracking-wider uppercase mb-4 block">
-                            {"// Contato"}
-                        </span>
+                        <CodeComment text="Contato" />
 
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
                             Vamos transformar sua{" "} <span className="text-primary">ideia em realidade</span>

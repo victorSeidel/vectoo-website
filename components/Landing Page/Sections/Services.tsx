@@ -1,17 +1,22 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
-import { Code2, Bot, Lightbulb, Shield, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
-import { SERVICES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const iconMap = { code: Code2, bot: Bot, lightbulb: Lightbulb, shield: Shield };
+import { CodeComment } from "@/components/Landing Page/CodeComment";
+import { Button } from "@/components/UI/Button";
+
+import { findAllServices } from "@/database/data/services";
 
 export function ServicesSection() 
 {
-    const [activeService, setActiveService] = useState(SERVICES[0].id as 'desenvolvimento' | 'automacao' | 'consultoria' | 'seguranca');
-    const activeServiceData = SERVICES.find((s) => s.id === activeService);
+    const services = findAllServices();
+
+    const [activeService, setActiveService] = useState(services[0].id);
+    const activeServiceData = services.find((s) => s.id === activeService);
 
     return (
         <section id="servicos" className="relative py-12 md:py-32 overflow-hidden">
@@ -20,9 +25,7 @@ export function ServicesSection()
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="max-w-3xl mb-16">
-                    <span className="text-primary font-mono text-sm tracking-wider uppercase mb-4 block">
-                        {"// Nossos Serviços"}
-                    </span>
+                    <CodeComment text="Nossos Serviços" />
 
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
                         Soluções completas para sua <span className="text-primary">transformação digital</span>
@@ -36,57 +39,37 @@ export function ServicesSection()
 
                 <div className="hidden lg:grid lg:grid-cols-12 gap-8">
                     <div className="col-span-4 space-y-3">
-                        {SERVICES.map((service) => 
+                        {services.map((service) => 
                         {
-                            const Icon = iconMap[service.icon as keyof typeof iconMap];
                             const isActive = activeService === service.id;
 
                             return (
-                                <button
-                                type="button"
-                                key={service.id}
-                                onClick={() => setActiveService(service.id)}
-                                className={cn(
-                                    "cursor-pointer w-full text-left p-5 rounded-xl border transition-all duration-300 group",
-                                    isActive
-                                    ? "bg-primary/10 border-primary/30 shadow-[0_0_30px_rgba(98,222,99,0.1)]"
-                                    : "bg-card/30 border-border/50 hover:border-primary/20 hover:bg-card/50"
-                                )}
-                                >
-                                <div className="flex items-start gap-4">
-                                    <div
-                                    className={cn(
-                                        "p-3 rounded-lg transition-colors duration-300",
-                                        isActive
-                                        ? "bg-primary text-primary-foreground"
-                                        : "bg-secondary text-muted-foreground group-hover:text-foreground"
-                                    )}
-                                    >
-                                    <Icon size={24} />
+                                <button key={service.id} onClick={() => setActiveService(service.id)}
+                                    className={cn("cursor-pointer w-full text-left p-4 rounded-xl border transition-all duration-300 group",
+                                        isActive 
+                                            ? "bg-primary/10 border-primary/30 shadow-[0_0_30px_rgba(98,222,99,0.1)]" 
+                                            : "bg-card/30 border-border/50 hover:border-primary/20 hover:bg-card/50"
+                                        )}>
+
+                                    <div className="flex items-center gap-4">
+                                        <div className={cn("p-3 rounded-lg transition-colors duration-300",
+                                                isActive ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground group-hover:text-foreground")}>
+                                            <service.icon size={24} />
+                                        </div>
+
+                                        <div className="flex-1">
+                                            <h3 className={cn("font-semibold text-lg mb-1 transition-colors", isActive ? "text-primary" : "text-foreground")}>
+                                                {service.title}
+                                            </h3>
+
+                                            <p className="text-sm text-muted-foreground">
+                                                {service.subtitle}
+                                            </p>
+                                        </div>
+
+                                        <ChevronRight size={20} className={cn("mt-1 transition-all duration-300",
+                                            isActive ? "text-primary translate-x-1" : "text-muted-foreground opacity-0 group-hover:opacity-100" )} />
                                     </div>
-                                    <div className="flex-1">
-                                    <h3
-                                        className={cn(
-                                        "font-semibold text-lg mb-1 transition-colors",
-                                        isActive ? "text-primary" : "text-foreground"
-                                        )}
-                                    >
-                                        {service.title}
-                                    </h3>
-                                    <p className="text-sm text-muted-foreground">
-                                        {service.subtitle}
-                                    </p>
-                                    </div>
-                                    <ChevronRight
-                                    className={cn(
-                                        "mt-1 transition-all duration-300",
-                                        isActive
-                                        ? "text-primary translate-x-1"
-                                        : "text-muted-foreground opacity-0 group-hover:opacity-100"
-                                    )}
-                                    size={20}
-                                    />
-                                </div>
                                 </button>
                             );
                         })}
@@ -94,52 +77,46 @@ export function ServicesSection()
 
                     <div className="col-span-8">
                         {activeServiceData && (
-                        <div className="h-full p-8 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm">
-                            <div className="h-full flex flex-col">
-                            <div className="mb-8">
-                                <h3 className="text-2xl font-bold text-foreground mb-2">
-                                {activeServiceData.title}
-                                </h3>
-                                <p className="text-muted-foreground leading-relaxed">
-                                {activeServiceData.description}
-                                </p>
-                            </div>
-
-                            <div className="flex-1">
-                                <h4 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-                                O que oferecemos
-                                </h4>
-                                <div className="grid grid-cols-2 gap-4">
-                                {activeServiceData.features.map((feature, index) => (
-                                    <div
-                                    key={feature}
-                                    className="flex items-center gap-3 p-3 rounded-lg bg-secondary/30 border border-border/30 transition-all duration-300 hover:border-primary/20"
-                                    style={{ animationDelay: `${index * 50}ms` }}
-                                    >
-                                    <div className="w-2 h-2 rounded-full bg-primary" />
-                                    <span className="text-sm text-foreground">
-                                        {feature}
-                                    </span>
+                            <div className="h-full p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm">
+                                <div className="h-full flex flex-col">
+                                    <div className="mb-8">
+                                        <h3 className="text-2xl font-bold text-foreground mb-2">{activeServiceData.title}</h3>
+                                        <p className="text-muted-foreground leading-relaxed">{activeServiceData.description}</p>
                                     </div>
-                                ))}
+
+                                    <div className="flex-1 mb-8">
+                                        <h4 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">O que oferecemos</h4>
+                                        <div className="grid grid-cols-3 gap-4">
+                                            {activeServiceData.features.map((feature, index) => (
+                                                <div key={feature} style={{ animationDelay: `${index * 50}ms` }} 
+                                                    className="flex items-center gap-3 p-3 rounded-lg bg-secondary/30 border border-border/30
+                                                        transition-all duration-300 hover:border-primary/20" >
+                                                    <div className="w-2 h-2 rounded-full bg-primary" />
+                                                    <span className="text-sm text-foreground"> {feature} </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <Button asChild className="max-w-56" >
+                                        <Link href={`/servicos/${activeServiceData.id}`} >
+                                            Ver Mais
+                                        </Link>
+                                    </Button>
                                 </div>
                             </div>
-                            </div>
-                        </div>
                         )}
                     </div>
                 </div>
 
                 <div className="lg:hidden space-y-6">
-                    {SERVICES.map((service) => 
+                    {services.map((service) => 
                     {
-                        const Icon = iconMap[service.icon as keyof typeof iconMap];
-
                         return (
                             <div key={service.id} className="p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm" >
                                 <div className="flex items-start gap-4 mb-4">
                                     <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                                        <Icon size={24} />
+                                        <service.icon size={24} />
                                     </div>
 
                                     <div>

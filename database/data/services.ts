@@ -24,13 +24,17 @@ export const SERVICES: Service[] =
     {
         id: "desenvolvimento-de-sites-e-sistemas",
         icon: Computer,
+        comment: "Desenvolvimento",
         title: "Desenvolvimento de Sites e Sistemas",
-        subtitle: "Desenvolvimento",
+        subtitle: "Sites, sistemas, aplicações e mais",
         heroTagline: "Do zero à produção, com código que escala",
-        description: "",
-        seoDescription: "Desenvolvimento web personalizado: sites institucionais, e-commerces, sistemas e plataformas SaaS. Tecnologia moderna e código de qualidade para o seu negócio.",
+        description: "Desenvolvimento web personalizado: sites institucionais, e-commerces, sistemas e plataformas SaaS. Tecnologia moderna e código de qualidade para o seu negócio.",
         longDescription: "Construímos produtos digitais completos e sob medida, alinhados à estratégia do seu negócio. Nossa abordagem une performance, escalabilidade e boas práticas de engenharia desde a primeira linha de código, garantindo sistemas fáceis de manter e prontos para crescer junto com a sua operação.",
-        features: ["Automação", "Segurança"],
+        features: 
+        [
+            "Sites e Landing Pages", "Sistemas Personalizados", "E-commerce / Lojas Virtuais",
+            "Plataformas SaaS", "Blogs e Portais", "PWAs e Web Apps",
+        ],
         benefits:
         [
             { title: "Código escalável", description: "Arquitetura pensada para crescer sem retrabalho conforme a demanda aumenta." },

@@ -16,10 +16,11 @@ export const metadata: Metadata =
 import PostsList from '@/components/Posts/PostsList';
 import { findAllPublicPosts } from '@/queries/post-queries';
 
-import { Header } from '@/components/Landing Page/Sections/Header';
+import { CodeComment } from "@/components/Landing Page/CodeComment";
 import { FloatingCTA } from '@/components/Landing Page/FloatingCta';
-import { ParticlesBackground } from "@/components/Landing Page/ParticlesBackground";
 import { Footer } from '@/components/Landing Page/Sections/Footer';
+import { Header } from '@/components/Landing Page/Sections/Header';
+import { ParticlesBackground } from "@/components/Landing Page/ParticlesBackground";
 
 export default async function BlogPage()
 {
@@ -37,9 +38,7 @@ export default async function BlogPage()
 
                     <div className="container mx-auto px-4 md:px-6 relative z-10">
                         <div className="max-w-6xl">
-                            <span className="block mb-4 text-sm text-primary font-mono tracking-wider">
-                                {"// BLOG"}
-                            </span>
+                            <CodeComment text="Blog" />
 
                             <h1 className="mb-6 text-4xl md:text-6xl text-foreground font-bold">
                                 Ideias e insights sobre <span className="text-primary"> tecnologia </span>

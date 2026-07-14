@@ -16,14 +16,14 @@ export async function generateMetadata({ params }: {  params: Promise<{ id: stri
 
     return { 
         title: service.title,
-        description: service.seoDescription,
+        description: service.description,
         keywords: [...service.features, ...service.technologies, service.title],
         alternates: { canonical: `https://vectoo.com.br/servicos/${id}` },
         openGraph: {
             type: "website",
             locale: "pt_BR",
             title: `${service.title} | Vectoo`,
-            description: service.seoDescription,
+            description: service.description,
             siteName: "Vectoo",
         },
     };
@@ -38,6 +38,7 @@ import { findAllServices, findRelatedServices, findServiceById } from "@/databas
 import { COMPANY } from '@/lib/constants';
 
 import { Button } from '@/components/UI/Button';
+import { CodeComment } from "@/components/Landing Page/CodeComment";
 import { FloatingCTA } from '@/components/Landing Page/FloatingCta';
 import { Footer } from '@/components/Landing Page/Sections/Footer';
 import { Header } from '@/components/Landing Page/Sections/Header';
@@ -57,7 +58,7 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
         "@context": "https://schema.org",
         "@type": "Service",
         name: service.title,
-        description: service.seoDescription,
+        description: service.description,
         provider: { "@type": "Organization", name: "Vectoo", email: COMPANY.email, telephone: COMPANY.phone },
         areaServed: "BR",
         serviceType: service.subtitle,
@@ -96,7 +97,7 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
                     <div className="absolute bottom-0 left-0 w-100 h-100 bg-primary/5 rounded-full blur-[120px]" />
 
                     <div className="container mx-auto px-4 md:px-6 relative z-10">
-                        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted-foreground">
+                        <nav aria-label="Breadcrumb" className="mb-12 text-sm text-muted-foreground">
                             <ol className="flex items-center gap-2">
                                 <li><Link href="/" className="hover:text-primary">Início</Link></li>
                                 <li aria-hidden="true">/</li>
@@ -107,23 +108,21 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
                         </nav>
 
                         <div className="max-w-6xl">
-                            <span className="block mb-4 text-sm text-primary font-mono tracking-wider">
-                                {`// ${service.subtitle.toUpperCase()}`}
-                            </span>
+                            <CodeComment text={service.comment} />
 
-                            <h1 className="mb-6 text-4xl md:text-6xl text-foreground font-bold">
+                            <h1 className="mb-4 text-4xl md:text-6xl text-foreground font-bold">
                                 {service.title}
                             </h1>
 
-                            <p className="mb-6 text-xl text-primary">
+                            <p className="mb-8 text-xl text-primary">
                                 {service.heroTagline}
                             </p>
 
-                            <p className="text-muted-foreground text-lg leading-relaxed text-pretty">
-                                {service.longDescription}
+                            <p className="mb-8 text-muted-foreground text-lg leading-relaxed text-pretty">
+                                {service.description}
                             </p>
 
-                            <div className="mt-8 flex flex-wrap gap-4">
+                            <div className="flex flex-wrap gap-4">
                                 <Button asChild className="w-56" >
                                     <Link href="/#contato" >
                                         Solicitar orçamento
@@ -134,9 +133,15 @@ export default async function ServicePage({ params }: { params: Promise<{ id: st
                         </div>
                     </div>
                 </section>
+
                 <section className="py-12 md:py-20">
                     <div className="container mx-auto px-4 md:px-6">
                         <h2 className="mb-8 text-3xl font-bold text-foreground">O que entregamos</h2>
+
+                        <p className="mb-8 text-muted-foreground text-lg leading-relaxed text-pretty">
+                            {service.longDescription}
+                        </p>
+
                         <ul className="grid gap-4 md:grid-cols-2">
                             {service.features.map((feature) => (
                                 <li key={feature} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
