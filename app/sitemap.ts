@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap>
         url: `${baseUrl}/blog/post/${post.slug}`,
         lastModified: new Date(post.updatedAt),
         changeFrequency: 'weekly' as const,
-        priority: 0.7,
+        priority: 0.5,
     }));
 
     return [
@@ -21,6 +21,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap>
             lastModified: new Date(),
             changeFrequency: 'yearly' as const,
             priority: 1,
+        },
+        {
+            url: `${baseUrl}/blog`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly' as const,
+            priority: 0.7,
         },
         ...postsRoutes,
     ]

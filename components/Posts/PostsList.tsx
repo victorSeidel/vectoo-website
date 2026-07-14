@@ -56,7 +56,7 @@ export default function PostsList({ posts }: { posts: Post[] })
                 </div>
 
                 <div className="flex flex-wrap gap-2.5">
-                    {POST_CATEGORIES.map((cat) => (
+                    {["Todos", ...POST_CATEGORIES].map((cat) => (
                         <button type="button" key={cat} onClick={() => handleCategoryChange(cat)}
                             className={cn("px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                                 category === cat 

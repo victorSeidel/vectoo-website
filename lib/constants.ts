@@ -100,5 +100,5 @@ export const TECHNOLOGIES =
 
 export const POST_CATEGORIES =
 [
-    "Automação", "Bots", "Consultoria", "Desenvolvimento", "Inteligência Artificial", "SaaS", "Software", "Segurança"
+    "Automação", "Bots", "Desenvolvimento", "Inteligência Artificial", "SaaS", "Software", "Segurança"
 ];
