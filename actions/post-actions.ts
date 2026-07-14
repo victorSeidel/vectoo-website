@@ -115,16 +115,21 @@ function validatePost(formData: FormData): | { success: true; data: CreatePostDt
 
     const errors: string[] = [];
 
-    if (data.title.length < 3) errors.push('Título deve ter, no mínimo, 3 caracteres');
-    if (data.title.length > 150) errors.push('Título deve ter um máximo de 150 caracteres');
-
-    if (data.content.length < 3) errors.push('Conteúdo é obrigatório');
+    if (data.category.length < 3) errors.push('Categoria é obrigatória');
+    if (!data.tags) errors.push('Tags são obrigatórias');
 
     if (data.author.length < 3) errors.push('Autor precisa de um mínimo de 3 caracteres');
     if (data.author.length > 50) errors.push('Nome do autor não deve ter mais que 50 caracteres');
 
+    if (data.title.length < 3) errors.push('Título deve ter, no mínimo, 3 caracteres');
+    if (data.title.length > 100) errors.push('Título deve ter um máximo de 100 caracteres');
+
     if (data.excerpt.length < 3) errors.push('Excerto precisa de um mínimo de 3 caracteres');
     if (data.excerpt.length > 200) errors.push('Excerto não deve ter mais que 200 caracteres');
+
+    if (data.content.length < 3) errors.push('Conteúdo é obrigatório');
+
+    if (data.readTime <= 0) errors.push('Tempo de leitura deve ser maior que 0');
 
     if (errors.length > 0) return { success: false, errors, data };
     

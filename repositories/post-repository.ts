@@ -1,4 +1,4 @@
-import { db } from "@/db/postgres";
+import { db } from "@/database/postgres";
 
 import { CreatePostDto, Post, ResponsePostDto, UpdatePostDto } from "@/models/post-model";
 import { makeSlugFromText } from "@/utils/text";

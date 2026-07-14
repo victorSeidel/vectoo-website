@@ -36,7 +36,7 @@ export default async function BlogPage()
                     <div className="absolute bottom-0 left-0 w-100 h-100 bg-primary/5 rounded-full blur-[120px]" />
 
                     <div className="container mx-auto px-4 md:px-6 relative z-10">
-                        <div className="max-w-5xl">
+                        <div className="max-w-6xl">
                             <span className="block mb-4 text-sm text-primary font-mono tracking-wider">
                                 {"// BLOG"}
                             </span>

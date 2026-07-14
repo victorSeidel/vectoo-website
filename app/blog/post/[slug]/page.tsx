@@ -1,4 +1,13 @@
 import { Metadata } from 'next';
+
+export async function generateStaticParams()
+{
+    const posts = await findAllPublicPosts();
+    return posts.map((post) => ({ post: post.slug }));
+}
+
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: {  params: Promise<{ slug: string; }>; }): Promise<Metadata>
 {
     const { slug } = await params;
@@ -12,7 +21,7 @@ export async function generateMetadata({ params }: {  params: Promise<{ slug: st
         openGraph: {
             type: "article",
             locale: "pt_BR",
-            title: post.title,
+            title: `${post.title} | Vectoo`,
             description: post.excerpt,
             images: [{ url: post.coverImage }],
             publishedTime: post.createdAt.toString(),
@@ -28,7 +37,7 @@ import { notFound } from 'next/navigation';
 
 import { ArrowRight, Calendar, Clock, User } from 'lucide-react';
 
-import { findPublicPostBySlug, findRelatedPosts } from '@/queries/post-queries';
+import { findAllPublicPosts, findPublicPostBySlug, findRelatedPosts } from '@/queries/post-queries';
 import { formatDatetime } from '@/utils/datetime';
 
 import { Markdown } from '@/components/UI/Markdown';
