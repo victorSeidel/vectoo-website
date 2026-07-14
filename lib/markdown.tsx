@@ -133,18 +133,15 @@ function inline(text: string)
     html = html.replace(/_(.*?)_/g, "<em>$1</em>");
     html = html.replace(/~~(.*?)~~/g, "<del>$1</del>");
     html = html.replace(/`(.*?)`/g, "<code>$1</code>");
-    html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener" class="text-primary-dark font-semibold hover:underline" > $1 </a>');
     return html;
 }
 
 const tagClasses =
 {
-    1: "text-4xl font-extrabold mt-10 mb-8",
-    2: "text-3xl font-bold mt-10 mb-6",
-    3: "text-2xl font-semibold mt-8 mb-4",
-    4: "text-xl font-medium mt-6 mb-4",
-    5: "text-lg font-medium mt-4 mb-2",
-    6: "text-base font-normal mt-4 mb-2",
+    2: "mt-12 text-2xl md:text-3xl font-bold",
+    3: "mt-8 text-xl md:text-2xl font-semibold",
+    4: "mt-6 text-lg md:text-xl font-medium"
 };
 
 function renderMarkdown(nodes: MarkdownNode[]) 
@@ -155,7 +152,8 @@ function renderMarkdown(nodes: MarkdownNode[])
         {
             case "heading":
                 const Tag = `h${node.level}` as React.ElementType;
-                return ( <Tag key={index} dangerouslySetInnerHTML={{  __html: inline(node.content!) }} className={tagClasses[node.level as keyof typeof tagClasses]} /> );
+                const classes = tagClasses[node.level as keyof typeof tagClasses];
+                return ( <Tag key={index} dangerouslySetInnerHTML={{  __html: inline(node.content!) }} className={`${classes} text-start text-black mb-2`} /> );
 
             case "paragraph":
                 return ( <p key={index} dangerouslySetInnerHTML={{  __html: inline(node.content!) }} className="mb-4" /> );
@@ -176,7 +174,7 @@ function renderMarkdown(nodes: MarkdownNode[])
             case "list":
                 const List = node.ordered ? "ol" : "ul";
                 return (
-                    <List key={index}>
+                    <List key={index} className="space-y-2" >
                         {node.children?.map((child, i) => (
                             <li key={i} dangerouslySetInnerHTML={{ __html: inline(child.content!) }} />
                         ))}

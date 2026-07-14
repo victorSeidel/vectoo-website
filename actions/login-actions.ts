@@ -19,7 +19,7 @@ export async function loginAction(state: { username: string; error: string; }, f
     if (!isUsernameValid || !isPasswordValid) return { username: '', error: 'Credenciais inválidas' };
 
     await createSession(username);
-    redirect('/blog');
+    redirect('/admin');
 }
 
 export async function logoutAction()

@@ -6,7 +6,7 @@ export function Markdown({ children, className = '' }: { children: React.ReactNo
     const text = typeof children === "string" ? children : Array.isArray(children) ? children.join("") : "";
               
     return (
-        <div className={cn("max-w-none prose", className)} >
+        <div className={cn("max-w-none text-gray-900 text-justify prose", className)} >
             {markdown(text)}
         </div>
     );

@@ -20,3 +20,7 @@ export const findPublicPostBySlug = cache((slug: string) =>
         return post;
     }, [`post-${slug}`], { tags: [`post-${slug}`] })(slug);
 });
+
+export const findRelatedPosts = cache((id: string) =>
+    unstable_cache(() => postRepository.findRelated(id), [`related-posts-${id}`], { tags: [`related-posts-${id}`, 'posts'] })()
+);

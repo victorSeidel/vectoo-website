@@ -31,6 +31,22 @@ export class PostRepository
         return mapPost(result.rows[0]);
     }
 
+    async findRelated(id: string): Promise<Post[]>
+    {
+        const current = await this.findById(id);
+
+        const related = await db.query(`SELECT p.*,
+            (CASE WHEN p.category = $2 THEN 5 ELSE 0 END + (SELECT COUNT(*) FROM unnest(p.tags) AS tag WHERE tag = ANY($3::text[])) * 2) AS score
+            FROM posts p WHERE p.id <> $1 AND p.published = true ORDER BY score DESC, p.created_at DESC LIMIT 6`, [id, current.category, current.tags]
+        );
+
+        const rows = related.rows.filter(post => post.score > 0);
+        if (rows.length > 0) return rows.map(mapPost);
+
+        const recent = await db.query(`SELECT * FROM posts WHERE id <> $1 AND published = true ORDER BY created_at DESC LIMIT 6`, [id]);
+        return recent.rows.map(mapPost);
+    }
+
     async create(post: CreatePostDto): Promise<ResponsePostDto>
     {
         const slug = makeSlugFromText(post.title);
